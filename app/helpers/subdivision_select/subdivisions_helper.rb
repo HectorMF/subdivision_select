@@ -9,7 +9,7 @@ module SubdivisionSelect
       if ISO3166::Country[alpha2].nil?
         {}
       else
-        ISO3166::Country[alpha2].subdivisions.map { |k, v| [k, v["name"]] }.to_h
+        ISO3166::Country[alpha2].subdivisions.map { |k, v| [k, v["translations"][I18n.locale.to_s] ? v["translations"][I18n.locale.to_s]: v["translations"]['en']] }.to_h
       end
     end
 
